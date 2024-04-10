@@ -9,45 +9,37 @@
 
 Шифр Плейфера — матрица 5х5, заполненная символами латинского алфавита, кодовое слово и дальнейшие манипуляции над ними.
     ----------------------------------------------------------------------------------------------------------------
-
-	 шифр Атбаша:
-def Atbash(tt):
+def atbash(tt):
     result = ""
     for i in tt:
         if i.isalpha():
             if i.isupper():
-                result += chr(90 - ord(i) + 65)
+                result += chr(1071 - ord(i) + 1040)
             else:
-                result += chr(122 - ord(i) + 97)
+                result += chr(1103 - ord(i) + 1072)
         else:
             result += i
     return result
 
-tt = input()
-cc = Atbash(tt)
-print(cc)
------------------------------------------------------------------------------------------------------------------------------
-	шифр Цезаря:
-		def cc(tt , ss):
-    print("какой вы хотите использовать алфавит? русский/english")
-    aa = input()
-    if aa == 'русский':
-        al = ['а', 'б', 'в', 'г', 'д', 'е', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф','х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я']
-    else:
-        al = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    ss = int(input())
-    tt = input()
-    kk = 0
-    for i in tt:
-        if tt.isalpha():
-            if tt.islower():
-                al = al.lower()
-                ci = al.index(i)
-                ni = (ci + ss) % 26
-                kk += al[ni]
-            else:
-                kk += i
-                en = cc(tt, ss)
-                print(en)
-                dd = cc(en, -ss)
-                print(dd)
+
+def cezar(input_data):
+    al = ['а', 'б', 'в', 'г', 'д', 'е', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф',
+          'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я']
+    ss = 5
+    tt = input_data
+    answer = ""
+    for x in tt:
+        if x in (".", ",", ";", ":", "_", "-", ")", "(", "<", ">", "!", "?", "=", "+", " "):
+            answer += x
+            continue
+        flag = True
+        if x.isupper():
+            x = x.lower()
+            flag = False
+        ind = al.index(x)
+        newind = (ind + ss) % len(al)
+        x1 = al[newind]
+        if flag == False:
+            x1 = x.upper()
+        answer += x1
+    return answer
