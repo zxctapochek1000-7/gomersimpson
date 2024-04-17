@@ -46,8 +46,8 @@ def cezar(input_data):
 
 
 
-ar = list(input())
-morz= { 'А': '• _ - •',
+def morza(ar):
+    morz= { 'А': '• _ - •',
         'Б': '• - - -',
         'В': '• - -',
         'Г': '- - •',
@@ -98,5 +98,7 @@ morz= { 'А': '• _ - •',
         '?':  '··––··',
         ' ': '...'
     }
-for i in range(len(ar)):
-    print(morz[ar[i].upper()],end="/")
+    s = ''
+    for i in range(len(ar)):
+        s += morz[ar[i].upper()]
+    return s
