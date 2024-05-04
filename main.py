@@ -18,7 +18,7 @@ def main() -> None:
             g_new = logic.morza(ar=s)
             print(g_new)
         elif answer == "4":
-            break
+            return
         else:
             cc_output.show_option_error_message()
         cc_output.show_continue_message()
