@@ -7,7 +7,7 @@ def main() -> None:
     while True:
         cc_output.show_options_message()
         answer = cc_input.get_answer()
-        s = input("Введите строку")
+        s = input("Введите строку ")
         if answer == "1":
             s_new = logic.atbash(tt=s)
             print(s_new)
